@@ -30,7 +30,8 @@ class Material
 {
 public:
 	void loadFile(const char* file_name);
-	void load_texture(const char* file_name);
+	GLuint load_texture(const char* file_name);
+	void read(const char* fileName);
 
 	//vectors
 	std::vector<material> material_list;

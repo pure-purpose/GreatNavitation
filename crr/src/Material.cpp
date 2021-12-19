@@ -1,61 +1,54 @@
 #include "Material.h"
+#define STB_IMAGE_RESIZE_IMPLEMENTATION
 #include "stb_image.h"
+#include "stb_image_resize.h"
 #include <sstream>
 #include <iostream>
 //#include <opencv2/opencv.hpp>
 //using namespace cv;
 using namespace std;
 
-void Material::load_texture(const char* fileName)
+GLuint Material::load_texture(const char* fileName)
 {
-	/*Mat img = imread(file_name);
-	resize(img, img, Size(1024, 1024));
-	GLint height = img.rows, width = img.cols, total_bytes;*/
+
 	GLint width, height, nrChannels;
-	GLubyte* pixels = 0;
+	GLubyte* ipixels = 0, *pixels=nullptr;
 	GLint last_texture_ID;
 	GLuint texture_ID = 0;
 
-	//{
-	//	GLint line_bytes = width * 3;
-	//	/*while (line_bytes % 4 != 0)
-	//		++line_bytes;*/      //不一定是bmp了，不存在这个问题
-	//	total_bytes = line_bytes * height;
-	//}
-
-
-	//pixels = (GLubyte*)malloc(total_bytes);
-
-	////cout << height << " "<<width<<endl;
-	//for (int i = 0; i < height; i++)
-	//	for (int j = 0; j < width; j++)
-	//	{
-	//		pixels[(i * width + j) * 3] = img.at<Vec3b>(height - 1 - i, j)[0];
-	//		pixels[(i * width + j) * 3 + 1] = img.at<Vec3b>(height - 1 - i, j)[1];
-	//		pixels[(i * width + j) * 3 + 2] = img.at<Vec3b>(height - 1 - i, j)[2];
-	//	}
 	pixels = stbi_load(fileName, &width, &height, &nrChannels, 0);
-
+	/*pixels = (GLubyte*)malloc(width * height * nrChannels);
+	stbir_resize(ipixels, width, height, 0, pixels, 1024, 1024, 0, STBIR_TYPE_UINT8, nrChannels, STBIR_ALPHA_CHANNEL_NONE, 0,
+		STBIR_EDGE_CLAMP, STBIR_EDGE_CLAMP,
+		STBIR_FILTER_BOX, STBIR_FILTER_BOX,
+		STBIR_COLORSPACE_SRGB, nullptr);*/
 	glGenTextures(1, &texture_ID);
 	if (texture_ID == 0)
 	{
 		free(pixels);
-		return;
+		return 0;
 	}
 
 	glGetIntegerv(GL_TEXTURE_BINDING_2D, &last_texture_ID);
 	glBindTexture(GL_TEXTURE_2D, texture_ID);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	/*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
-		GL_BGR_EXT, GL_UNSIGNED_BYTE, pixels);
+		GL_BGR_EXT, GL_UNSIGNED_BYTE, pixels);*/
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
+		GL_RGB, GL_UNSIGNED_BYTE, pixels);
 	glBindTexture(GL_TEXTURE_2D, last_texture_ID);
 
-	free(pixels);
+	/*free(pixels);*/
 	this->texture_list.push_back(texture_ID);
+	return texture_ID;
 }
 
 void Material::loadFile(const char* file_name)
@@ -150,8 +143,7 @@ void Material::loadFile(const char* file_name)
 						iss >> temp >> filename;
 						char file[50] = "./model/Boat";
 						strcat_s(file, filename.c_str());
-						this->load_texture(file);
-						now_material.texture_id = this->texture_list.size() - 1;
+						now_material.texture_id = this->load_texture(file);
 					}
 				}
 				this->material_list.push_back(now_material);

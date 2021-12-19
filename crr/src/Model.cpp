@@ -69,6 +69,7 @@ void Model::read(const char* file_name)
 
 				vector<int> tri;
 				while (iss)
+				//for(int i=0; i<3; i++)
 				{
 					int value;
 					char x;
@@ -77,8 +78,8 @@ void Model::read(const char* file_name)
 					tri.push_back(value);
 					iss >> x >> value;
 					tri.push_back(value);
-					iss >> x >> value;
-					tri.push_back(value);
+					//iss >> x >> value;
+					tri.push_back(0);
 				}
 				this->face_list.push_back(tri);
 				this->face_material.push_back(now_material);
@@ -89,20 +90,20 @@ void Model::read(const char* file_name)
 
 void Model::draw()
 {
-	glBegin(GL_TRIANGLES);
-	for (auto& face : face_list)         //循环绘制每个面
-	{
-		glNormal3fv(mNormal[face.vertex[0][2]].Data);
-		glTexCoord2fv(mTexcoord[face.vertex[0][1]].Data);
-		glVertex3fv(mLocation[face.vertex[0][0]].Data);
+	//glBegin(GL_TRIANGLES);
+	//for (auto& face : face_list)         //循环绘制每个面
+	//{
+	//	glNormal3fv(mNormal[face.vertex[0][2]].Data);
+	//	glTexCoord2fv(mTexcoord[face.vertex[0][1]].Data);
+	//	glVertex3fv(mLocation[face.vertex[0][0]].Data);
 
-		glNormal3fv(mNormal[face.vertex[1][2]].Data);
-		glTexCoord2fv(mTexcoord[face.vertex[1][1]].Data);
-		glVertex3fv(mLocation[face.vertex[1][0]].Data);
+	//	glNormal3fv(mNormal[face.vertex[1][2]].Data);
+	//	glTexCoord2fv(mTexcoord[face.vertex[1][1]].Data);
+	//	glVertex3fv(mLocation[face.vertex[1][0]].Data);
 
-		glNormal3fv(mNormal[face.vertex[2][2]].Data);
-		glTexCoord2fv(mTexcoord[face.vertex[2][1]].Data);
-		glVertex3fv(mLocation[face.vertex[2][0]].Data);
-	}
-	glEnd();
+	//	glNormal3fv(mNormal[face.vertex[2][2]].Data);
+	//	glTexCoord2fv(mTexcoord[face.vertex[2][1]].Data);
+	//	glVertex3fv(mLocation[face.vertex[2][0]].Data);
+	//}
+	//glEnd();
 }

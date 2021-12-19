@@ -64,7 +64,7 @@ void set_camera()
     gluPerspective(75, 1, 1, 21);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0.1, 0.1, 4, 0, 0, 0, 0, 1, 0);
+    gluLookAt(10, 10, 10, 0, 0, 0, 0, 1, 0);
 }
 
 void reshape(int w, int h)
@@ -84,7 +84,7 @@ void initialize()
     glClearColor(0.0, 0.0, 0.0, 0.0);
     set_light();
     glShadeModel(GL_SMOOTH);
-    glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_COLOR_MATERIAL);
     glEnable(GL_DEPTH_TEST);
@@ -94,14 +94,15 @@ void initialize()
 void display(void)
 {
     // 清除屏幕
+    //glColor3f(0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // 设置光和视角
     set_light();
     set_camera();
     //处理旋转
+    //glColor3f(1, 0, 0);
     glRotatef(rot_x, 1.0f, 0.0f, 0.0f);
     glRotatef(rot_y, 0.0f, 1.0f, 0.0f);
-
     GLint last_texture_ID;
     glGetIntegerv(GL_TEXTURE_BINDING_2D, &last_texture_ID);
     for (int i = 0; i < model_object.face_list.size(); i++)
@@ -119,37 +120,32 @@ void display(void)
         }
         if (now_material.texture_id != -1)
         {
-            glBindTexture(GL_TEXTURE_2D, material_object.texture_list.at(now_material.texture_id));
-            glBegin(GL_POLYGON);
+            //glEnable(GL_TEXTURE_2D);
+            //glBindTexture(GL_TEXTURE_2D, material_object.texture_list.at(now_material.texture_id));
+            glBindTexture(GL_TEXTURE_2D, now_material.texture_id);
+            glBegin(GL_QUADS);
             for (int j = 0; j < tri.size(); j += 3)
             {
                 int value = tri.at(j + 1);
                 glTexCoord2f(model_object.texture_list.at(2 * (value - 1)), model_object.texture_list.at(2 * (value - 1) + 1));
                 value = tri.at(j + 2);
-
-                for (auto i : tri)
-                    cout << i << " ";
-                cout << endl;
-                cout << value << endl;
-                for (auto i : model_object.normal_list)
-                    cout << i << " ";
-                cout << endl;
-                glNormal3f(model_object.normal_list.at(3 * (value - 1)) + dx, model_object.normal_list.at(3 * (value - 1) + 1) + dy, model_object.normal_list.at(3 * (value - 1) + 2));
+                //glNormal3f(model_object.normal_list.at(3 * (value - 1)) + dx, model_object.normal_list.at(3 * (value - 1) + 1) + dy, model_object.normal_list.at(3 * (value - 1) + 2));
                 value = tri.at(j);
                 glVertex3f(model_object.vertex_list.at(3 * (value - 1)) + dx, model_object.vertex_list.at(3 * (value - 1) + 1) + dy, model_object.vertex_list.at(3 * (value - 1) + 2));
             }
             glEnd();
+            //glDisable(GL_TEXTURE_2D);
         }
         else {
             glMaterialfv(GL_FRONT, GL_SPECULAR, now_material.Ks);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, now_material.Kd);
             glLightModelfv(GL_LIGHT_MODEL_AMBIENT, now_material.Ka);
             //glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
-            glBegin(GL_POLYGON);
+            glBegin(GL_QUADS);
             for (int j = 0; j < tri.size(); j += 3)
             {
                 int value = tri.at(j + 2);
-                glNormal3f(model_object.normal_list.at(3 * (value - 1)) + dx, model_object.normal_list.at(3 * (value - 1) + 1) + dy, model_object.normal_list.at(3 * (value - 1) + 2));
+                //glNormal3f(model_object.normal_list.at(3 * (value - 1)) + dx, model_object.normal_list.at(3 * (value - 1) + 1) + dy, model_object.normal_list.at(3 * (value - 1) + 2));
                 value = tri.at(j);
                 glVertex3f(model_object.vertex_list.at(3 * (value - 1)) + dx, model_object.vertex_list.at(3 * (value - 1) + 1) + dy, model_object.vertex_list.at(3 * (value - 1) + 2));
             }
@@ -227,6 +223,7 @@ int main(int argc, char* argv[])
     glutMouseFunc(mouse_recall);
     glutMotionFunc(mouse_move_recall);
     glutDisplayFunc(&display);
+    glutIdleFunc(&display);
 
     //load the material
     material_object.loadFile("./model/Boat/boat.mtl");
