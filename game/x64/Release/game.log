@@ -1,0 +1,25 @@
+﻿  Water2.cpp
+E:\2021-2022FW\ComputerGraphics\game\crr\include\Shader.h(56,40): warning C4101: “e”: 未引用的局部变量
+E:\2021-2022FW\ComputerGraphics\game\crr\include\mesh.h(90,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(49,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(250,58): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(252,58): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(254,65): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(261,63): warning C4244: “+=”: 从“double”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(396,37): warning C4305: “+=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(400,37): warning C4305: “-=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(444,32): warning C4305: “-=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(446,37): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(453,32): warning C4305: “+=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(455,38): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+LINK : warning LNK4098: 默认库“MSVCRTD”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  正在生成代码
+  1 of 1149 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  game.vcxproj -> E:\2021-2022FW\ComputerGraphics\game\x64\Release\game.exe
