@@ -18,27 +18,24 @@
     <ClCompile Include="..\crr\src\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\crr\src\Skybox.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\crr\src\TextRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\crr\src\VertexBufferOcean.cpp">
+    <ClCompile Include="..\crr\src\Voyage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\crr\src\Water2.cpp">
+    <ClCompile Include="..\crr\src\GreatNavitation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\crr\src\Skybox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\crr\src\TextRenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\crr\src\VertexBufferOcean.h">
+    <ClInclude Include="..\crr\src\Voyage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crr\src\FFT.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

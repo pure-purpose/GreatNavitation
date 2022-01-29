@@ -1,25 +1,40 @@
-﻿  Water2.cpp
-E:\2021-2022FW\ComputerGraphics\game\crr\include\Shader.h(56,40): warning C4101: “e”: 未引用的局部变量
-E:\2021-2022FW\ComputerGraphics\game\crr\include\mesh.h(90,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(49,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(250,58): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(252,58): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(254,65): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(261,63): warning C4244: “+=”: 从“double”转换到“T”，可能丢失数据
+﻿  glad.c
+  GreatNavitation.cpp
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\include\Shader.h(56,40): warning C4101: “e”: 未引用的局部变量
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\include\mesh.h(90,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(46,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(232,58): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(234,58): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(236,65): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(243,63): warning C4244: “+=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(396,37): warning C4305: “+=”: 从“double”到“float”截断
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(400,37): warning C4305: “-=”: 从“double”到“float”截断
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(444,32): warning C4305: “-=”: 从“double”到“float”截断
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(446,37): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(453,32): warning C4305: “+=”: 从“double”到“float”截断
-E:\2021-2022FW\ComputerGraphics\game\crr\src\Water2.cpp(455,38): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(355,37): warning C4305: “+=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(359,37): warning C4305: “-=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(386,32): warning C4305: “-=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(388,37): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(395,32): warning C4305: “+=”: 从“double”到“float”截断
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\GreatNavitation.cpp(397,38): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  TextRenderer.cpp
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\include\Shader.h(56,40): warning C4101: “e”: 未引用的局部变量
+  Voyage.cpp
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\FFT.h(52,64): warning C4244: “参数”: 从“double”转换到“const std::complex<float>::_Ty”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\FFT.h(52,47): warning C4244: “参数”: 从“double”转换到“const std::complex<float>::_Ty”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\Voyage.cpp(17,60): warning C4305: “参数”: 从“double”到“_Ty”截断
+          with
+          [
+              _Ty=float
+          ]
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\Voyage.cpp(31,32): warning C4018: “<”: 有符号/无符号不匹配
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\Voyage.cpp(32,36): warning C4018: “<”: 有符号/无符号不匹配
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\Voyage.cpp(43,18): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\2021-2022FW\ComputerGraphics\game_final2\game_final\crr\src\Voyage.cpp(176,61): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  Previous IPDB not found, fall back to full compilation.
 LINK : warning LNK4098: 默认库“MSVCRTD”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   正在生成代码
-  1 of 1149 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+  All 1270 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
-  game.vcxproj -> E:\2021-2022FW\ComputerGraphics\game\x64\Release\game.exe
+  game.vcxproj -> E:\2021-2022FW\ComputerGraphics\game_final2\game_final\x64\Release\game.exe

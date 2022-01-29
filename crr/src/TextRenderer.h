@@ -3,7 +3,6 @@
 #define PROJECT_TEXTRENDERER_H
 
 
-// The Free Type Font rendering library
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -27,14 +26,13 @@ public:
     void renderText(Shader &s, std::string text,
                     GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 
-    // Projection matrix used by text
     glm::mat4 projection;
 private:
     struct Character {
-        GLuint     TextureID;  // ID handle of the glyph texture
-        glm::ivec2 Size;       // Size of glyph
-        glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph
-        GLuint     Advance;    // Offset to advance to next glyph
+        GLuint     TextureID;
+        glm::ivec2 Size;
+        glm::ivec2 Bearing;
+        GLuint     Advance;
     };
 
     std::map<GLchar, Character> Characters;

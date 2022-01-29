@@ -3,22 +3,17 @@
 
 TextRenderer::TextRenderer()
 {
-    // Set to some default value
     projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
-    // Initialize fonts
     FT_Library ft;
     if (FT_Init_FreeType(&ft)) {
         std::cout << "Failed to initialize freetype library!" << std::endl;
     }
     FT_Face face;
-    /*if (FT_New_Face(ft, "fonts/Consolas.ttf", 0, &face)) {
-        std::cout << "Failed to load fonts/Consolas.ttf!" << std::endl;
-    }*/
     if (FT_New_Face(ft, "fonts/Helvetica.ttf", 0, &face)) {
-        std::cout << "Failed to load fonts/Consolas.ttf!" << std::endl;
+        std::cout << "Failed to load fonts/Helvetica.ttf!" << std::endl;
     }
-    // Set height to 48 and width to automatic
+    // ×ÖÌå¸ß¶È
     FT_Set_Pixel_Sizes(face, 0, 48);
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // Disable byte-alignment restriction
@@ -31,7 +26,6 @@ TextRenderer::TextRenderer()
             std::cout << "ERROR::FREETYTPE: Failed to load Glyph " << (char)c << std::endl;
             continue;
         }
-        // Generate texture
         GLuint texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -46,12 +40,10 @@ TextRenderer::TextRenderer()
                 GL_UNSIGNED_BYTE,
                 face->glyph->bitmap.buffer
         );
-        // Set texture options
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        // Now store character for later use
         Character character = {
                 texture,
                 glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
@@ -71,7 +63,6 @@ TextRenderer::TextRenderer()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    // Deallocate resources
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 }
@@ -79,14 +70,12 @@ TextRenderer::TextRenderer()
 void TextRenderer::renderText(Shader &s, std::string text,
                               GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 {
-    // Activate corresponding render state
     s.use();
     s.setVec3("textColor", color);
     s.setMat4("projection", projection);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
-    // Iterate through all characters
     std::string::const_iterator c;
     for (c = text.begin(); c != text.end(); c++)
     {
@@ -97,7 +86,6 @@ void TextRenderer::renderText(Shader &s, std::string text,
 
         GLfloat w = ch.Size.x * scale;
         GLfloat h = ch.Size.y * scale;
-        // Update VBO for each character
         GLfloat vertices[6][4] = {
                 { xpos,     ypos + h,   0.0, 0.0 },
                 { xpos,     ypos,       0.0, 1.0 },
@@ -107,16 +95,12 @@ void TextRenderer::renderText(Shader &s, std::string text,
                 { xpos + w, ypos,       1.0, 1.0 },
                 { xpos + w, ypos + h,   1.0, 0.0 }
         };
-        // Render glyph texture over quad
         glBindTexture(GL_TEXTURE_2D, ch.TextureID);
-        // Update content of VBO memory
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
-        // Render quad
         glDrawArrays(GL_TRIANGLES, 0, 6);
-        // Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-        x += (ch.Advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
+        x += (ch.Advance >> 6) * scale;
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);

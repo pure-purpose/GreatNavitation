@@ -19,7 +19,7 @@ uniform Light light;
 uniform bool blinn;
 uniform vec3 basecolor;
 
-void sss()
+void only_light()
 {    
     vec3 I = normalize(Position - cameraPos);
     vec3 R = reflect(I, normalize(Normal));
@@ -54,7 +54,7 @@ float coeffs(int i)
     return 1.0/(3.0+0.1*float(i));
 }
 
-void mainddd()
+void other_render()
 {
     vec3 N = normalize(Normal);
     vec3 I = normalize(cameraPos - Position);
@@ -91,6 +91,7 @@ void main()
     FragColor = vec4(F*reflectedColor + (vec3(1.0)-F)*refractedColor, 1.0);
     vec3 color = F*reflectedColor + (vec3(1.0)-F)*refractedColor;
 
+    /* 光照 */
     /*vec3 ambient = 0.5 * color * light.ambient;
     // diffuse
     // vec3 lightDir = normalize(lightPos - Position);
@@ -101,7 +102,7 @@ void main()
     vec3 viewDir = normalize(cameraPos - Position);
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = 0.0;
-    if(blinn)
+    if(blinn)   //需要把.cpp里的开头bool变量注释去掉和键盘回调函数的注释去掉
     {
         vec3 halfwayDir = normalize(lightDir + viewDir);  
         spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
